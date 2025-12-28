@@ -4,11 +4,24 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+elasticnet_model = pickle.load(
+    open(os.path.join(BASE_DIR, 'models', 'elasticnet.pkl'), 'rb')
+)
+
+standard_scaler = pickle.load(
+    open(os.path.join(BASE_DIR, 'models', 'scaler.pkl'), 'rb')
+)
+
+
 application = Flask(__name__)
 app = application
 
-elasticnet_model = pickle.load(open('models/elasticnet.pkl','rb'))
-standard_scaler = pickle.load(open('models/scaler.pkl','rb'))
+# elasticnet_model = pickle.load(open('models/elasticnet.pkl','rb'))
+# standard_scaler = pickle.load(open('models/scaler.pkl','rb'))
 
 @app.route("/")
 
