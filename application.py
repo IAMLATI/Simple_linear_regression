@@ -10,8 +10,28 @@ from sklearn.preprocessing import StandardScaler
 application = Flask(__name__)
 app = application
 
-elasticnet_model = pickle.load(open('models/elasticnet.pkl','rb'))
-standard_scaler = pickle.load(open('models/scaler.pkl','rb'))
+import os
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load CSV
+csv_path = os.path.join(
+    BASE_DIR,
+    "Dataset",
+    "Algerian_forest_fires_dataset_UPDATE (1).csv"
+)
+df = pd.read_csv(csv_path, header=1)
+
+# Load models
+model_path = os.path.join(BASE_DIR, "models", "elasticnet.pkl")
+scaler_path = os.path.join(BASE_DIR, "models", "scaler.pkl")
+
+elasticnet_model = pickle.load(open(model_path, "rb"))
+standard_scaler = pickle.load(open(scaler_path, "rb"))
+
+# elasticnet_model = pickle.load(open('models/elasticnet.pkl','rb'))
+# standard_scaler = pickle.load(open('models/scaler.pkl','rb'))
 
 @app.route("/")
 
