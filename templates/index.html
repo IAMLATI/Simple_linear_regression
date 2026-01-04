@@ -1,1 +1,509 @@
-<h1> Welcome to the home page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Scientist Portfolio</title>
+  <meta name="description" content="Portfolio homepage for a data scientist: projects, skills, and contact." />
+  <style>
+    :root{
+      --bg:#050607;
+      --panel:#0b0d10;
+      --panel2:#0f1217;
+      --text:#e8ecf1;
+      --muted:#a9b2c0;
+      --line:rgba(255,255,255,.10);
+      --accent:#7c5cff;   /* violet */
+      --accent2:#00d3a7;  /* teal */
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(124,92,255,.18), transparent 55%),
+                  radial-gradient(900px 600px at 110% 10%, rgba(0,211,167,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 80px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      background:rgba(10,12,15,.55);
+      backdrop-filter: blur(10px);
+      border-radius:999px;
+      position:sticky;top:18px;z-index:30;
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px}
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(124,92,255,.12);
+    }
+    .navlinks{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .navlinks a{
+      padding:8px 12px;border-radius:999px;
+      color:var(--muted);
+      border:1px solid transparent;
+      transition:.2s ease;
+      font-size:14px;
+    }
+    .navlinks a:hover{color:var(--text);border-color:var(--line);background:rgba(255,255,255,.03)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      transition:.2s ease;
+      font-weight:600;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,211,167,.85));
+      color:#071015;
+      box-shadow: 0 10px 25px rgba(124,92,255,.18);
+    }
+    .btn.primary:hover{filter:saturate(1.05) brightness(1.03)}
+    .hero{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{padding:28px 26px}
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;
+      font-size:13px;color:var(--muted);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      padding:7px 10px;border-radius:999px;
+      margin-bottom:14px;
+    }
+    .pulse{
+      width:8px;height:8px;border-radius:50%;
+      background: var(--accent2);
+      box-shadow: 0 0 0 0 rgba(0,211,167,.35);
+      animation: pulse 2.2s infinite;
+    }
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(0,211,167,.30)}
+      70%{box-shadow:0 0 0 10px rgba(0,211,167,0)}
+      100%{box-shadow:0 0 0 0 rgba(0,211,167,0)}
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .lead{margin:0 0 18px;color:var(--muted);font-size:16px;max-width:60ch}
+    .hl{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .metaRow{
+      display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;color:var(--muted);font-size:13px
+    }
+    .meta{
+      display:flex;gap:8px;align-items:center;
+      padding:7px 10px;border-radius:999px;border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+    }
+    .icon{
+      width:18px;height:18px;display:inline-block;opacity:.95
+    }
+    .heroSide{
+      padding:22px;
+      display:flex;flex-direction:column;gap:14px;
+      background: linear-gradient(180deg, rgba(15,18,23,.9), rgba(10,12,15,.55));
+    }
+    .statGrid{
+      display:grid;grid-template-columns:1fr 1fr;gap:10px;
+    }
+    .stat{
+      padding:14px;border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .stat strong{display:block;font-size:18px}
+    .stat span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+    .spark{
+      margin-top:8px;height:34px;border-radius:10px;
+      background: linear-gradient(90deg,
+        rgba(124,92,255,.0),
+        rgba(124,92,255,.22),
+        rgba(0,211,167,.20),
+        rgba(0,211,167,.0));
+      position:relative;overflow:hidden;
+    }
+    .spark::after{
+      content:"";position:absolute;inset:-40px 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,.35), transparent 45%);
+      transform: translateX(-30%);
+      animation: shimmer 3.5s linear infinite;
+      opacity:.35;
+    }
+    @keyframes shimmer{to{transform:translateX(130%)}}
+    .mini{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      border-radius:14px;
+      padding:14px;
+    }
+    .mini h3{margin:0 0 6px;font-size:14px}
+    .mini p{margin:0;color:var(--muted);font-size:13px}
+    section{margin-top:26px}
+    .sectionHead{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:12px
+    }
+    .sectionHead h2{margin:0;font-size:18px;letter-spacing:-.2px}
+    .sectionHead p{margin:0;color:var(--muted);font-size:13px}
+    .grid{
+      display:grid;grid-template-columns: repeat(12, 1fr);gap:14px;
+    }
+    .project{
+      grid-column: span 4;
+      padding:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      transition:.2s ease;
+      position:relative;overflow:hidden;
+    }
+    .project:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.18)}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;color:var(--muted);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:6px 10px;border-radius:999px;
+    }
+    .project h3{margin:12px 0 6px;font-size:16px}
+    .project p{margin:0;color:var(--muted);font-size:13px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .tag{
+      font-size:12px;color:rgba(232,236,241,.9);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      padding:6px 10px;border-radius:999px;
+    }
+    .skills{
+      grid-column: span 6;
+      padding:18px;border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .skillList{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .pill{
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .cta{
+      margin-top:26px;
+      padding:22px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background:
+        radial-gradient(600px 250px at 20% 0%, rgba(124,92,255,.22), transparent 55%),
+        radial-gradient(600px 250px at 90% 100%, rgba(0,211,167,.18), transparent 55%),
+        rgba(255,255,255,.02);
+      display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+      box-shadow: var(--shadow);
+    }
+    .cta h3{margin:0;font-size:18px}
+    .cta p{margin:4px 0 0;color:var(--muted);font-size:13px;max-width:70ch}
+    footer{
+      margin-top:26px;
+      color:var(--muted);
+      font-size:13px;
+      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      padding:0 2px;
+    }
+
+    /* responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr; }
+      .project{grid-column: span 6;}
+      .skills{grid-column: span 12;}
+    }
+    @media (max-width: 640px){
+      .nav{border-radius:18px}
+      .navlinks{display:none}
+      .project{grid-column: span 12;}
+      .heroMain{padding:22px}
+      .heroSide{padding:18px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Olamide Bamigbola </span>
+      </div>
+
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn primary" href="#contact" title="Get in touch">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="1.6" opacity=".5"/>
+          <path d="m7 12 3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Hire / Collaborate
+      </a>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <div class="hero">
+        <section class="card heroMain">
+          <div class="kicker"><span class="pulse" aria-hidden="true"></span>Data Scientist • ML • Analytics</div>
+          <h1>
+            Turning messy data into <span class="hl">clear decisions</span>.
+          </h1>
+          <p class="lead">
+            I build end-to-end machine learning and analytics products—forecasting, experimentation, and
+            causal insights—designed to ship, scale, and explain themselves.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn primary" href="#projects">
+              View projects
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="m13 6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a class="btn" href="#" onclick="alert('Replace this with your resume link!')">
+              Download resume
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="m8 11 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 21h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </a>
+            <a class="btn" href="#contact">
+              Contact
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7.5 12 13l8-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 7.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5" stroke="currentColor" stroke-width="1.6" opacity=".6"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="metaRow" aria-label="Quick highlights">
+            <div class="meta">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2 2 7l10 5 10-5-10-5Z" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.6" opacity=".7"/>
+                <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.6" opacity=".7"/>
+              </svg>
+              6+ shipped models
+            </div>
+            <div class="meta">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 19V5" stroke="currentColor" stroke-width="1.6" opacity=".7"/>
+                <path d="M4 19h16" stroke="currentColor" stroke-width="1.6" opacity=".7"/>
+                <path d="M7 15l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Forecasting & uplift
+            </div>
+            <div class="meta">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 7 10.5 16.5 4 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Production MLOps
+            </div>
+          </div>
+        </section>
+
+        <aside class="card heroSide">
+          <div class="statGrid" aria-label="Stats">
+            <div class="stat">
+              <strong>+18%</strong>
+              <span>conversion lift</span>
+              <div class="spark" aria-hidden="true"></div>
+            </div>
+            <div class="stat">
+              <strong>-23%</strong>
+              <span>churn reduction</span>
+              <div class="spark" aria-hidden="true"></div>
+            </div>
+            <div class="stat">
+              <strong>99.9%</strong>
+              <span>pipeline uptime</span>
+              <div class="spark" aria-hidden="true"></div>
+            </div>
+            <div class="stat">
+              <strong>&lt;200ms</strong>
+              <span>model latency</span>
+              <div class="spark" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="mini" id="about">
+            <h3>About</h3>
+            <p>
+              Data scientist focused on interpretable ML, experimentation, and reliable deployment.
+              I love building tools that make teams faster—and insights easier to trust.
+            </p>
+          </div>
+
+          <div class="mini">
+            <h3>Currently</h3>
+            <p>
+              Exploring retrieval-augmented analytics, drift monitoring, and
+              time series models for real-world demand signals.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="sectionHead">
+          <div>
+            <h2>Featured projects</h2>
+            <p>Replace these with your real work and links.</p>
+          </div>
+          <a class="btn" href="#" onclick="alert('Add your GitHub / project index link!')">All projects</a>
+        </div>
+
+        <div class="grid">
+          <article class="project">
+            <span class="badge">📈 Forecasting</span>
+            <h3>Demand Forecasting Pipeline</h3>
+            <p>
+              End-to-end time-series pipeline with backtesting, drift alerts, and
+              automated model selection for weekly planning.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">LightGBM</span><span class="tag">Airflow</span><span class="tag">MLflow</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="badge">🧪 Experimentation</span>
+            <h3>Causal Impact Dashboard</h3>
+            <p>
+              Self-serve experiment readouts: CUPED variance reduction, segmented effects,
+              and guardrail monitoring in one place.
+            </p>
+            <div class="tags">
+              <span class="tag">A/B Testing</span><span class="tag">Causal Inference</span><span class="tag">SQL</span><span class="tag">Streamlit</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="badge">🤖 Machine Learning</span>
+            <h3>Churn & Uplift Modeling</h3>
+            <p>
+              Targeted retention using uplift models; explainable features and
+              cost-aware thresholds aligned with business goals.
+            </p>
+            <div class="tags">
+              <span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">Uplift</span><span class="tag">MLOps</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="sectionHead">
+          <div>
+            <h2>Skills</h2>
+            <p>Tooling + methods I use to deliver reliable results.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="skills">
+            <h3 style="margin:0 0 6px;font-size:16px;">Core</h3>
+            <div class="skillList">
+              <span class="pill">Python</span>
+              <span class="pill">SQL</span>
+              <span class="pill">Pandas / NumPy</span>
+              <span class="pill">scikit-learn</span>
+              <span class="pill">XGBoost / LightGBM</span>
+              <span class="pill">Statsmodels</span>
+              <span class="pill">Time Series</span>
+              <span class="pill">Experimentation</span>
+            </div>
+          </div>
+
+          <div class="skills">
+            <h3 style="margin:0 0 6px;font-size:16px;">Production</h3>
+            <div class="skillList">
+              <span class="pill">Docker</span>
+              <span class="pill">Airflow</span>
+              <span class="pill">MLflow</span>
+              <span class="pill">Feature Stores</span>
+              <span class="pill">CI/CD</span>
+              <span class="pill">Monitoring & Drift</span>
+              <span class="pill">AWS / GCP</span>
+              <span class="pill">APIs</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA / CONTACT -->
+      <section class="cta" id="contact">
+        <div>
+          <h3>Let’s build something useful.</h3>
+          <p>
+            Open to full-time roles, consulting, and collaborations. If you have a dataset and a goal,
+            I’ll help you turn it into a measurable outcome.
+          </p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn primary" href="mailto:Olam.bamigbola@gmail.com">Email me</a>
+          <a class="btn" href="#" onclick="alert('Add your LinkedIn URL!')">LinkedIn</a>
+          <a class="btn" href="#" onclick="alert('Add your GitHub URL!')">GitHub</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> Olamide Bamigbola • Data Scientist</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
